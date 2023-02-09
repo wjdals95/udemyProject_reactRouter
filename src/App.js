@@ -1,8 +1,11 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 //Route: 특정 경로를 정의한 다음 URL에서 경로가 활성화될 때 로드되어야 하는
 //리액트 컴포넌트를 정의하는 컴포넌트이다.
 
 // Switch: 라우트 컴포넌트 주위에 래핑 될 수 있다.
+
+// Redirect: 렌더링이 되면 그 이름이 의미하는 바를 실행하게 된다.
+//사용자를 다른 곳으로 리디렉션 하는 것이다.
 import Welcome from "./pages/Welcome";
 import Products from "./pages/Products";
 import MainHeader from "./components/MainHeader";
@@ -14,6 +17,9 @@ function App() {
       <MainHeader />
       <main>
         <Switch>
+          <Route path="/" exact>
+            <Redirect to="/welcome" />
+          </Route>
           <Route path="/welcome">
             <Welcome />
           </Route>
